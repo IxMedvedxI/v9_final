@@ -11,6 +11,7 @@ int main(){
 	list.PushEnd(5);
 	list.PushEnd(4);
 	list.PushEnd(23);
+	list.PushEnd(23);
 	cout << list;
 
 }
