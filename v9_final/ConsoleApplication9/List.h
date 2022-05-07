@@ -17,6 +17,7 @@ public:
 			info = NULL;
 			next = NULL;
 		}
+		~Node() {}
 		Node(T info, Node* next) :info(info), next(next) {}
 		/*Node& operator=(const Node& node) {
 			info = node.info;
@@ -31,6 +32,7 @@ public:
 	List() {
 		head = tail = NULL;
 	}
+	~List() {};
 	void PushStart(T data) {
 		Node* nd = new Node(data,head);
 		if (head == NULL) {
@@ -48,6 +50,63 @@ public:
 		tail = nd;
 	}
 
+	bool Poisk( T data) {
+		Node* node;
+		for (node = head; node != NULL; node = node->next) {
+			if (node->info == data) {
+				return 1;
+			}
+		}
+		return 0;
+	}
+
+	void Delet(T data) {
+		Node* node = head;
+		Node* prev = node;
+		for (node = head; node != NULL && node->info != data; node = node->next) {
+			prev = node;
+		}
+		if (node == head) {
+			head = node->next;
+			delete node;
+			return;
+		}
+		if (node->info == data) {
+			prev->next = node->next;
+			delete node;
+			return;
+
+		}
+	}
+
+	void sort() {
+		Node* b = head;
+		Node* first = head;
+		Node* insert;
+		
+		while( b->next != NULL) {
+			insert = b->next;
+			if (insert->info > b->info) {
+				b = b->next;
+				continue;
+			}
+			b->next = b->next->next;
+			if (insert->info < first->info)
+			{
+				insert->next = first->next;
+				first = insert;
+			}
+			else
+			{
+				for (Node* h = first; h != b && h->info > insert->info; h = h->next) {
+					insert->next = h->next;
+					h->next = insert;
+				}
+			}
+			
+
+		}
+	}
 
 
 	friend ostream& operator<<(ostream& os, const List& a) {

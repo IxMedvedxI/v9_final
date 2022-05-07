@@ -8,10 +8,14 @@
 
 int main(){
 	List<int>list;
-	list.PushEnd(5);
+	list.PushStart(5);
 	list.PushEnd(4);
+	list.PushEnd(2);
+	list.PushEnd(3);
+	list.PushEnd(1);
 	list.PushEnd(23);
-	list.PushEnd(23);
+	//list.Delet(5);
+	list.sort();
 	cout << list;
 
 }
