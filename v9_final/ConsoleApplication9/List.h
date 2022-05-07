@@ -81,7 +81,6 @@ public:
 
 	void sort() {
 		Node* b = head;
-		Node* first = head;
 		Node* insert;
 		
 		while( b->next != NULL) {
@@ -91,23 +90,21 @@ public:
 				continue;
 			}
 			b->next = b->next->next;
-			if (insert->info < first->info)
+			if (insert->info < head->info)
 			{
-				insert->next = first->next;
-				first = insert;
+				insert->next = head;
+				head = insert;
 			}
 			else
 			{
-				for (Node* h = first; h != b && h->info > insert->info; h = h->next) {
+				for (Node* h = head; h != b && h->info > insert->info; h = h->next) {
 					insert->next = h->next;
 					h->next = insert;
 				}
 			}
-			
-
 		}
-	}
 
+	}
 
 	friend ostream& operator<<(ostream& os, const List& a) {
 		Node* node;

@@ -14,6 +14,9 @@ int main(){
 	list.PushEnd(3);
 	list.PushEnd(1);
 	list.PushEnd(23);
+	list.PushEnd(11);
+	list.PushEnd(10);
+	cout << list<<endl;
 	//list.Delet(5);
 	list.sort();
 	cout << list;
